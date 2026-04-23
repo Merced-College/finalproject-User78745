@@ -1,0 +1,20 @@
+This Text File is meant to keep up-to-date on which each version aims to do next and has accomplished.
+
+Beforehand:
+A bunch of complier issues and setting up on my end. I needed to test run.
+
+Simple Rooms Added
+--> Managed to: create and add in rooms to the game
+--> Must now: add tranversal between the rooms
+
+Transversal Between Rooms
+--> Managed to: add rooms layout and movement between them
+--> Must now: add enemies to put in the rooms
+
+Enemies Implemented
+--> Managed to: add in simple enemies
+--> Must now: add in NPCs
+
+Simple Allies Implemented
+--> Managed to: add in basic allies
+--> Must now: add player into the rooms/ enemies and allies into the rooms

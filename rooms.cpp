@@ -1,0 +1,52 @@
+//implementation file for the rooms class
+#include "rooms.h"
+
+Rooms::Rooms(const std::string& name, const std::string& id, const std::string& desc){
+    roomName = name;
+    roomID = id;
+    description = desc;
+    north = nullptr;
+    south = nullptr;
+    east = nullptr;
+    west = nullptr;
+}
+
+std::string Rooms::getRoomName(){
+    return roomName;
+}
+
+std::string Rooms::getRoomID(){
+    return roomID;
+}
+
+std::string Rooms::getDescription(){
+    return description;
+}
+
+
+//Transveral Handlers
+Rooms* Rooms::getNorth(){
+    return north;
+}
+Rooms* Rooms::getSouth(){
+    return south;
+}
+Rooms* Rooms::getEast(){
+    return east;
+}
+Rooms* Rooms::getWest(){
+    return west;
+}
+
+void Rooms::setNorth(Rooms* room){
+    north = room;
+}
+void Rooms::setSouth(Rooms* room){
+    south = room;
+}
+void Rooms::setEast(Rooms* room){
+    east = room;
+}
+void Rooms::setWest(Rooms* room){
+    west = room;
+}
