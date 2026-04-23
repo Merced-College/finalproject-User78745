@@ -13,7 +13,7 @@ int main() {
     
     game.start(); // Starts the game, initializes the world, and displays the initial room description.
     while(!game.isGameOver()) { // Game loop, runs while gameOver is false
-        game.choice(); 
+        game.choice(); // Prompts for Player Choice then executes action. // Maybe we make it two separate functions?
     }
      
     cout << "Game Successfully Quited!" << endl;

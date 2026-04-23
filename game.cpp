@@ -18,7 +18,7 @@ void Game::start() {
 
 void Game::showHelp() const { // Lists available commands
     cout << 
-        "Welcome to Help Screen\n" << 
+        "Welcome to Help Screen!\n" << 
         "Available Commands:\n" <<
         "0: Quit Game\n" <<
         "1: Describe Current Room\n" <<
@@ -65,7 +65,7 @@ void Game::choice() { // Deals with User Input and choices.
         case 0: // Quit option. If Choice == 0.
             setGameOver();
             break; 
-        case 1: // Show Help. If Choice == 1.
+        case 1: // Describe Current Room. If Choice == 1.
             describeCurrentRoom();
             break;
         case 2: // Show Status. If Choice == 2.
