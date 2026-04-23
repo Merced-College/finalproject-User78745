@@ -12,8 +12,8 @@
 
 class Game {
 public:
-    Game(); // I belive this is uninitialized and needs parameters
-    bool isGameOver() const; // checks if game is running/over // Should this really be a const? Probably not?
+    Game(); 
+    bool isGameOver() const; // checks if game is running/over 
     void start();
     void showHelp() const;
     void status() const;
@@ -21,10 +21,12 @@ public:
     void move(const std::string& direction);
     void attackEnemy();
     void talkToAlly();
+    void choice();
     void setGameOver();
+    
 
 private:
-    void buildWorld(); // What in the ligma does this do?
+    void buildWorld(); 
     void fightEnemy(); 
     void enemyAttack();
     std::string normalizeDirection(const std::string& direction) const;
