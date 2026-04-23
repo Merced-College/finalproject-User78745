@@ -1,4 +1,4 @@
-#include "player.h"
+#include "Player.h"
 
 Player::Player(int hp, std::string name){
     this->hp = hp;

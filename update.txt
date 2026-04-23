@@ -19,4 +19,3 @@ Simple Allies Implemented
 --> Managed to: add in basic allies
 --> Must now: add player into the rooms/ enemies and allies into the rooms
 
-rizzly 2
