@@ -17,7 +17,16 @@ void Game::start() {
 }
 
 void Game::showHelp() const { // Lists available commands
-    cout << "Legit, on big G, you don't need help." << endl; 
+    cout << 
+        "Welcome to Help Screen\n" << 
+        "Available Commands:\n" <<
+        "0: Quit Game\n" <<
+        "1: Describe Current Room\n" <<
+        "2: Show Player Status\n" <<
+        "3: Move in a Direction \n" <<
+        "4: Attack Enemy\n" <<
+        "5: Talk to Ally\n" <<
+        "6: Show Help Screen\n";  
 }
 
 void Game::status() const {
@@ -47,7 +56,7 @@ void Game::setGameOver() {
 void Game::choice() { // Deals with User Input and choices.
     int choice; 
     
-    cout << "Choose an option: "; // Choice Prompt
+    cout << "Choose an option ('6' For Help): "; // Choice Prompt
     cin >> choice; // Choice value
     cout << "Choice is: " << choice << endl; // Confirms and displays player choice
     cout << " " << endl; // Adds a blank line for better readability
@@ -76,6 +85,9 @@ void Game::choice() { // Deals with User Input and choices.
             break;
         case 5: // Initiates Ally Dialogue. If Choice == 5.
             talkToAlly();
+            break;
+        case 6: // Shows help screen. If Choice == 6.
+            showHelp();
             break;
         default:
             cout << "Invalid choice. Please try again." << endl;
