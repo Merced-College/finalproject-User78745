@@ -36,7 +36,7 @@ private:
     //std::unordered_map<std::string, std::shared_ptr<Rooms>> rooms;
     //std::unordered_map<std::string, std::shared_ptr<Enemies>> enemies;
     //std::unordered_map<std::string, std::shared_ptr<Allies>> allies;
-    //std::shared_ptr<Rooms> currentRoom;
+    Rooms* currentRoom;
     bool gameOver;
 };
 
