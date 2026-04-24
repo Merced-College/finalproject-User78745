@@ -1,13 +1,21 @@
 #include <iostream>
 #include <string>
-#include "player.h"
+#include "Player.h"
 #include "rooms.h"
 #include "enemies.h"
 #include "allies.h"
+#include "game.h"
 using namespace std;
 //1st - Had to change the tasks.json to handle all cpp files in the folder, instead of just main.cpp
 
-
 int main() {
-    return 0;
+    Game game;
+    
+    game.start(); // Starts the game, initializes the world, and displays the initial room description.
+    while(!game.isGameOver()) { // Game loop, runs while gameOver is false
+        game.choice(); // Prompts for Player Choice then executes action. // Maybe we make it two separate functions?
+    }
+     
+    cout << "Game Successfully Quited!" << endl;
+    return 0; 
 }
