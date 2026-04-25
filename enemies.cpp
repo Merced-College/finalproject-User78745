@@ -1,8 +1,12 @@
 #include "enemies.h"
+#include <iostream>
+using namespace std;
 
-Enemies::Enemies(int hp, std::string name){
+Enemies::Enemies(int hp, std::string name, std::string description, std::string warningStr) {
     this->hp = hp;
     this->name = name;
+    this->description = description;
+    this->warningStr = warningStr; 
 }
 
 int Enemies::getHp(){
@@ -14,4 +18,17 @@ void Enemies::takeDamage(int damage){
     if(hp < 0){
         hp = 0;
     }
+}
+
+std::string Enemies::getName(){
+    return name;
+}
+
+std::string Enemies::getDescription(){
+    return description;
+}
+
+std::string Enemies::displayWarning(){
+    //cout << warningStr << endl;
+    return warningStr;
 }

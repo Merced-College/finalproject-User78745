@@ -3,19 +3,13 @@
 #include <string>
 #include <algorithm>
 #include <limits>
-#include "rooms.h"
+#include "objectInstances.h"
 using namespace std;
 
 
-// Create five instances of the room class, this will be our rooms
-Rooms room1("Entrance", "R001", "A dark and eerie entrance to the dungeon. The air is thick with the smell of damp stone and decay.");
-Rooms room2("The Dining Hall", "R002", "A large, grand dining hall with a long table at the center. The walls are adorned with faded tapestries, and the air is filled with the scent of decay and rot.");
-Rooms room3("The Armory", "R003", "A small, cramped armory filled with rusted weapons and armor. The air is thick with the smell of metal and dust.");
-Rooms room4("The Treasury", "R004", "A luxurious treasury filled with gold and precious gems. The air is thick with the scent of wealth and opulence.");
-Rooms room5("The Escape Route", "R005", "A hidden passage that leads to freedom. The air is fresh and clean, a stark contrast to the rest of the dungeon.");
-
 //Function to build the world be connecting all the rooms together. Called beforehand to set up the world. 
 void Game::buildWorld(){
+    // Sets Room Directions
     room1.setEast(&room2);
     room1.setSouth(&room3);
     room2.setWest(&room1);
@@ -26,6 +20,13 @@ void Game::buildWorld(){
     room4.setWest(&room3);
     room4.setSouth(&room5);
     room5.setNorth(&room4);
+
+    // Sets up Enemies in Rooms
+    //room1.setEnemy(&enemy1); // No enemy in entrance room. For now.
+    room2.setEnemy(&enemy2);
+    room3.setEnemy(&enemy3);
+    room4.setEnemy(&enemy4);
+    room5.setEnemy(&enemy5);
 }
 
 //figure out what room we are currently in?
@@ -77,11 +78,15 @@ void Game::move(const std::string& direction) {
     else if (dir == "west") next = currentRoom->getWest();
     else {
         cout << "Invalid direction. Please enter north, south, east, or west." << endl;
+        cout << " " << endl;
         return;
     }
     if (next) {
-        currentRoom = next;
-        cout << "You moved " << direction << "." << endl;
+        checkEnemy(next); // Checks if there is an enemy in the next room and initiates combat if there is.
+        if(next->getEnemy() == nullptr){  // Checks if there is an enemy. If none, move to next room.
+            currentRoom = next;
+            cout << "You entered into: " << currentRoom->getRoomName() << "." << endl;
+        }
     } else {
         cout << "You can't move " << direction << " from here." << endl;
     }
@@ -94,8 +99,60 @@ std::string Game::normalizeDirection(const std::string& direction) const {
     return d;
 }
 
-void Game::attackEnemy() {
-    
+void Game::checkEnemy(Rooms* next) { // Checks if there should be an Enemy within the next room. Then displays a warning and choice to enter combat.
+    Enemies* enemy = next->getEnemy();
+    if (enemy) {
+        cout << enemy->displayWarning() << endl;
+        cout << "Do you want to enter combat? (0:No|1:Yes): ";
+
+        int choice;
+        cin >> choice;
+        if (choice == 1) {
+            fightEnemy(next);
+        } else if(choice == 0){
+            cout << "You return back to the room you were in, avoiding combat." << endl;
+        } else{
+            cout << "Invalid choice. Try again." << endl;
+            checkEnemy(next);
+        }
+    }
+}
+
+void Game::attackEnemy(Rooms* next) { // Attacks the enemy within the room
+    Enemies* enemy = next->getEnemy();
+    if (!enemy) {
+        cout << "You attack the air." << endl;
+        return;
+    }
+
+    int damage = 25; // Player attack Damage.
+    enemy->takeDamage(damage);
+    cout << "You hit the " << enemy->getName() << " for "<< damage << " damage." << endl;
+
+    if (enemy->getHp() == 0) { // Sets the room pointer to null after the enemy is defeated
+        cout << "Enemy defeated!" << endl;
+        cout << " " << endl; // Adds a blank line for better readability
+        next->setEnemy(nullptr);
+    } else {
+        cout << "Enemy HP remaining: " << enemy->getHp() << endl;
+    }
+}
+
+void Game::fightEnemy(Rooms* next){ // Handles Enemy Combat
+    while(next->getEnemy() != nullptr){ // While there is still an enemy in the room, continue combat.
+        cout << "What will you do? (0: Attack | 1: THERE IS NO OTHER OPTION): ";
+        int choice;
+        cin >> choice;
+        if(choice == 0){
+            attackEnemy(next);
+        } else if(choice == 1){
+            cout << "FIGHT!" << endl;
+            fightEnemy(next);
+        } else{
+            cout << "Invalid choice. Try again." << endl;
+            fightEnemy(next);
+        }
+    }
 }
 
 void Game::talkToAlly() {
@@ -115,36 +172,36 @@ void Game::choice() { // Deals with User Input and choices.
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "Invalid input. Please enter a number." << endl;
+        cout << " " << endl;
         return;
     }
-    cout << "Choice is: " << choice << endl; // Confirms and displays player choice
     cout << " " << endl; // Adds a blank line for better readability
 
     switch (choice) { // Switch statement to handle player choice
-        case 0: // Quit option. If Choice == 0.
+        case 0: // Quit option.
             setGameOver();
             break; 
-        case 1: // Describe Current Room. If Choice == 1.
+        case 1: // Describe Current Room.
             describeCurrentRoom();
             break;
-        case 2: // Show Status. If Choice == 2.
+        case 2: // Show Status.
             status();
             break;
-        case 3: // Asks for direction input, then moves the User. If Choice == 3. --> Changed to normalizDirection()
-        { // Apparently these brackets are needed to declare a variable within the case statement
+        case 3: // Asks for direction input, then moves the User. --> Changed to normalizDirection()
+        { 
             string direction;
-            cout << "Enter a direction to move (north, south, east, west): "; // Direction Prompt, needs normalization to be added
+            cout << "Enter a direction to move (north, south, east, west): "; // Direction Prompt.
             cin >> direction;
             move(string(direction));
             break;
         } 
-        case 4: // Attacks Enemy. If Choice == 4.
-            attackEnemy();
+        case 4: // Attacks Enemy.
+            //attackEnemy(); This is now redundant. Will need removeal.
             break;
-        case 5: // Initiates Ally Dialogue. If Choice == 5.
+        case 5: // Initiates Ally Dialogue.
             talkToAlly();
             break;
-        case 6: // Shows help screen. If Choice == 6.
+        case 6: // Shows help screen.
             showHelp();
             break;
         default:
