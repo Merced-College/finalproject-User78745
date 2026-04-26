@@ -1,6 +1,7 @@
 //implementation file for the rooms class
 #include "rooms.h"
 #include "enemies.h"
+#include "allies.h"
 
 Rooms::Rooms(const std::string& name, const std::string& id, const std::string& desc, Enemies* enemy) {
     roomName = name;
@@ -59,4 +60,13 @@ Enemies* Rooms::getEnemy(){
 
 void Rooms::setEnemy(Enemies* enemy){
     this->enemy = enemy;
+}
+
+//Ally Handler
+Allies* Rooms::getAlly(){
+    return ally;
+}
+
+void Rooms::setAlly(Allies* ally){
+    this->ally = ally;
 }

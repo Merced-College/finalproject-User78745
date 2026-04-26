@@ -68,3 +68,8 @@ Enemies enemy5(
 
 
 // --------------------------------------------------Ally Class Instances--------------------------------------------------
+
+Allies ally1(
+    "Larry",
+    "Hey there! I'm Larry, the friendly ghost. There's an escape route in the last room, but it's guarded by a monster. If you can defeat it, you can escape the dungeon!"
+);

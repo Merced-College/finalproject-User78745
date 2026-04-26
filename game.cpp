@@ -27,6 +27,9 @@ void Game::buildWorld(){
     room3.setEnemy(&enemy3);
     room4.setEnemy(&enemy4);
     room5.setEnemy(&enemy5);
+
+    // Sets up Allied NPCs
+    room1.setAlly(&ally1);
 }
 
 //figure out what room we are currently in?
@@ -156,7 +159,12 @@ void Game::fightEnemy(Rooms* next){ // Handles Enemy Combat
 }
 
 void Game::talkToAlly() {
-    
+    Allies* ally = currentRoom->getAlly();
+    if (ally) {
+        cout << ally->getMessage() << endl;
+    } else {
+        cout << "There is no one to talk to here." << endl;
+    }
 }
 
 void Game::setGameOver() {

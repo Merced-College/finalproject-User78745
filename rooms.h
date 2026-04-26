@@ -4,6 +4,7 @@
 #define ROOM_H
 #include <string>
 #include "enemies.h"
+#include "allies.h"
 
 class Rooms{
     public:
@@ -18,11 +19,13 @@ class Rooms{
         Rooms* getEast();
         Rooms* getWest();
         Enemies* getEnemy();
+        Allies* getAlly();
         void setNorth(Rooms* room);
         void setSouth(Rooms* room);
         void setEast(Rooms* room);
         void setWest(Rooms* room);
         void setEnemy(Enemies* enemy);
+        void setAlly(Allies* ally);
     private:
         std::string roomName;
         std::string roomID;
@@ -32,6 +35,7 @@ class Rooms{
         Rooms* east;
         Rooms* west;
         Enemies* enemy;
+        Allies* ally;
 };
 
 #endif

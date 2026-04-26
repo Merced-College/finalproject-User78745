@@ -1,12 +1,14 @@
 #include "allies.h"
 #include <iostream>
 
-Allies::Allies(std::string name){
+Allies::Allies(std::string name, std::string message){
     this->name = name;
+    this-> message = message;
+}
+
+std::string Allies::getMessage(){
+    return message;
 }
 
 
-void Allies::dialouge(std::string message){
-    std::cout << name << ": " << message << std::endl;
-}
 

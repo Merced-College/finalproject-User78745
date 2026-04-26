@@ -20,4 +20,10 @@ extern Enemies enemy3;
 extern Enemies enemy4;
 extern Enemies enemy5;
 
+extern Allies ally1;
+extern Allies ally2;
+extern Allies ally3;
+extern Allies ally4;
+extern Allies ally5;
+ 
 #endif 
