@@ -24,3 +24,8 @@ Simple Allies Implemented
 Game obj - moving Implemented
 --> Mangaed to: add in movement between the rooms and handle wrong user input. 
 --> Must now: work on NPC dialouge
+
+
+Allies added into the Game
+--> Managed to: add in working and dynamic allies into the game, that has a message
+--> Must now: work on implementating in more stuff???
