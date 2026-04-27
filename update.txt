@@ -1,3 +1,4 @@
+Yen's Developer Log
 This Text File is meant to keep up-to-date on which each version aims to do next and has accomplished.
 
 Beforehand:
@@ -19,3 +20,12 @@ Simple Allies Implemented
 --> Managed to: add in basic allies
 --> Must now: add player into the rooms/ enemies and allies into the rooms
 
+
+Game obj - moving Implemented
+--> Mangaed to: add in movement between the rooms and handle wrong user input. 
+--> Must now: work on NPC dialouge
+
+
+Allies added into the Game
+--> Managed to: add in working and dynamic allies into the game, that has a message
+--> Must now: work on implementating in more stuff???

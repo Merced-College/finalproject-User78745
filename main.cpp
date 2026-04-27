@@ -1,9 +1,5 @@
 #include <iostream>
 #include <string>
-#include "Player.h"
-#include "rooms.h"
-#include "enemies.h"
-#include "allies.h"
 #include "game.h"
 using namespace std;
 //1st - Had to change the tasks.json to handle all cpp files in the folder, instead of just main.cpp
@@ -13,9 +9,9 @@ int main() {
     
     game.start(); // Starts the game, initializes the world, and displays the initial room description.
     while(!game.isGameOver()) { // Game loop, runs while gameOver is false
-        game.choice(); // Prompts for Player Choice then executes action. // Maybe we make it two separate functions?
+        game.choice(); // Prompts for Player Choice then executes action.
     }
      
-    cout << "Game Successfully Quited!" << endl;
+    cout << "Game Successfully Quitted!" << endl;
     return 0; 
 }

@@ -3,11 +3,13 @@
 #ifndef ROOM_H
 #define ROOM_H
 #include <string>
+#include "enemies.h"
+#include "allies.h"
 
 class Rooms{
     public:
     //AI change - added constants and & to the constructor parameters
-        Rooms(const std::string& roomName, const std::string& roomID, const std::string& description);
+        Rooms(const std::string& roomName, const std::string& roomID, const std::string& description, Enemies* enemy = nullptr);
         std::string getRoomName();
         std::string getRoomID();
         std::string getDescription();
@@ -16,10 +18,14 @@ class Rooms{
         Rooms* getSouth();
         Rooms* getEast();
         Rooms* getWest();
+        Enemies* getEnemy();
+        Allies* getAlly();
         void setNorth(Rooms* room);
         void setSouth(Rooms* room);
         void setEast(Rooms* room);
         void setWest(Rooms* room);
+        void setEnemy(Enemies* enemy);
+        void setAlly(Allies* ally);
     private:
         std::string roomName;
         std::string roomID;
@@ -28,6 +34,8 @@ class Rooms{
         Rooms* south;
         Rooms* east;
         Rooms* west;
+        Enemies* enemy;
+        Allies* ally;
 };
 
 #endif
