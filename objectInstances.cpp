@@ -2,9 +2,6 @@
 
 #include "objectInstances.h"
 
-// Player Class Instances
-
-
 // --------------------------------------------------Room Class Instances--------------------------------------------------
 Rooms room1(
     "Entrance", 
@@ -30,6 +27,11 @@ Rooms room5(
     "Escape Route", 
     "R005", 
     "A hidden passage that leads to freedom. The air is fresh and clean, a stark contrast to the rest of the dungeon."
+);
+Rooms room6(
+    "Freedom!", 
+    "R006", 
+    "There is no Description. As the game ends upon entering Room 6."
 );
 
 

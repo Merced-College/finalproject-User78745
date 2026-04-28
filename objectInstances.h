@@ -14,6 +14,7 @@ extern Rooms room2;
 extern Rooms room3;
 extern Rooms room4;
 extern Rooms room5;
+extern Rooms room6;
 
 extern Enemies enemy1;
 extern Enemies enemy2;

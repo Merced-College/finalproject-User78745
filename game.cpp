@@ -9,7 +9,6 @@ using namespace std;
 
 //Function to build the world be connecting all the rooms together. Called beforehand to set up the world. 
 void Game::buildWorld(){
-    //Sets up Player
 
     // Sets Room Directions
     room1.setEast(&room2);
@@ -22,6 +21,8 @@ void Game::buildWorld(){
     room4.setWest(&room3);
     room4.setSouth(&room5);
     room5.setNorth(&room4);
+    room5.setSouth(&room6);
+    room6.setNorth(&room5);
 
     // Sets up Enemies in Rooms
     //room1.setEnemy(&enemy1); // No enemy in entrance room. For now.
@@ -42,7 +43,6 @@ void Game::buildWorld(){
     player.getInventory().addItem(items["apple"].get());
     player.getInventory().addItem(items["key"].get());
 }
-
 
 Game::Game() : gameOver(false) {
     buildWorld();
@@ -65,13 +65,8 @@ void Game::showHelp() const { // Lists available commands
         "1: Describe Current Room\n" <<
         "2: Check Inventory\n" <<
         "3: Move in a Direction \n" <<
-        "4: Attack Enemy\n" <<
-        "5: Talk to Ally\n" <<
-        "6: Show Help Screen\n";  
-}
-
-void Game::status() const {
-    cout << "No clue what you mean by Game::status()." << endl;
+        "4: Talk to Ally\n" <<
+        "5: Show Help Screen\n";  
 }
 
 void Game::showInventory() const {
@@ -84,12 +79,12 @@ void Game::describeCurrentRoom() const { // Gives a description of the current r
 
 //function made to move the player from room to room based on the direction they choose. Checks if the move is valid and updates the current room accordingly.
 void Game::move(const std::string& direction) {
-    std::string dir = normalizeDirection(direction);
+    normalizeDirection(direction);
     Rooms* next = nullptr;
-    if (dir == "north") next = currentRoom->getNorth();
-    else if (dir == "south") next = currentRoom->getSouth();
-    else if (dir == "east") next = currentRoom->getEast();
-    else if (dir == "west") next = currentRoom->getWest();
+    if (direction == "north") next = currentRoom->getNorth();
+    else if (direction == "south") next = currentRoom->getSouth();
+    else if (direction == "east") next = currentRoom->getEast();
+    else if (direction == "west") next = currentRoom->getWest();
     else {
         cout << "Invalid direction. Please enter north, south, east, or west.\n" << endl;
         return;
@@ -98,6 +93,7 @@ void Game::move(const std::string& direction) {
         checkEnemy(next); // Checks if there is an enemy in the next room and initiates combat if there is.
         if(next->getEnemy() == nullptr){  // Checks if there is an enemy. If none, move to next room.
             currentRoom = next;
+            checkEnd(currentRoom);
             cout << "You entered into: " << currentRoom->getRoomName() << "." << endl;
         }
     } else {
@@ -107,9 +103,9 @@ void Game::move(const std::string& direction) {
 
 // Helper function to normalize direction input
 std::string Game::normalizeDirection(const std::string& direction) const {
-    std::string d = direction;
-    std::transform(d.begin(), d.end(), d.begin(), ::tolower);
-    return d;
+    std::string normalized = direction;
+    std::transform(normalized.begin(), normalized.end(), normalized.begin(), ::tolower);
+    return normalized;
 }
 
 void Game::checkEnemy(Rooms* next) { // Checks if there should be an Enemy within the next room. Then displays a warning and choice to enter combat.
@@ -176,14 +172,19 @@ void Game::talkToAlly() {
     }
 }
 
+void Game::checkEnd(Rooms* Room){
+    if(Room->getRoomName() == "Freedom!"){
+        setGameOver();
+    }
+}
+
 void Game::setGameOver() {
     gameOver = true;
 }
 
 void Game::choice() { // Deals with User Input and choices.
     int choice; 
-    
-    cout << "Choose an option ('6' For Help): "; // Choice Prompt
+    cout << "Choose an option ('5' For Help): "; // Choice Prompt
     cin >> choice; // Choice value
     if (cin.fail()) { // Checks if the input is valid, if not it clears the error and ignores the rest of the input, then prompts the user to try again.    
         cin.clear();
@@ -191,8 +192,8 @@ void Game::choice() { // Deals with User Input and choices.
         cout << "Invalid input. Please enter a number.\n" << endl;
         return;
     }
-    cout << " " << endl; // Adds a blank line for better readability
 
+    cout << " " << endl; // Adds a blank line for better readability
     switch (choice) { // Switch statement to handle player choice
         case 0: // Quit option.
             setGameOver();
@@ -203,28 +204,23 @@ void Game::choice() { // Deals with User Input and choices.
         case 2: // Show Inventory.
             showInventory();
             break;
-        case 3: // Asks for direction input, then moves the User. --> Changed to normalizDirection()
-        { 
+        case 3:{ // Asks for direction input, then moves the User. --> Changed to normalizDirection()
             string direction;
             cout << "Enter a direction to move (north, south, east, west): "; // Direction Prompt.
             cin >> direction;
             move(string(direction));
             break;
         } 
-        case 4: // Attacks Enemy.
-            //attackEnemy(); This is now redundant. Will need removeal.
-            break;
-        case 5: // Initiates Ally Dialogue.
+        case 4: // Initiates Ally Dialogue.
             talkToAlly();
             break;
-        case 6: // Shows help screen.
+        case 5: // Shows help screen.
             showHelp();
             break;
         default:
             cout << "Invalid choice. Please try again." << endl;
             break;
     }
-
     cout << " " << endl; // Adds a blank line for better readability
 
 }

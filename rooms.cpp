@@ -1,4 +1,4 @@
-//implementation file for the rooms class
+//Implementation file for the rooms class
 #include "rooms.h"
 #include "enemies.h"
 #include "allies.h"
