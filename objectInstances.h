@@ -27,10 +27,10 @@ extern Allies ally3;
 extern Allies ally4;
 extern Allies ally5;
 
-extern item item1;
-extern item item2;
-extern item item3;
-extern item item4;
-extern item item5;
+extern Item item1;
+extern Item item2;
+extern Item item3;
+extern Item item4;
+extern Item item5;
 
 #endif 

@@ -9,6 +9,8 @@ using namespace std;
 
 //Function to build the world be connecting all the rooms together. Called beforehand to set up the world. 
 void Game::buildWorld(){
+    //Sets up Player
+
     // Sets Room Directions
     room1.setEast(&room2);
     room1.setSouth(&room3);
@@ -30,10 +32,16 @@ void Game::buildWorld(){
 
     // Sets up Allied NPCs
     room1.setAlly(&ally1);
+
+    //Set up Inventory
+    items["sword"] = std::make_unique<Item>("Sword");
+    items["apple"] = std::make_unique<Item>("Apple");
+    items["key"] = std::make_unique<Item>("Key");
+
+    player.getInventory().addItem(items["sword"].get());
+    player.getInventory().addItem(items["apple"].get());
+    player.getInventory().addItem(items["key"].get());
 }
-
-//figure out what room we are currently in?
-
 
 
 Game::Game() : gameOver(false) {
@@ -46,7 +54,6 @@ bool Game::isGameOver() const {
 }
 
 void Game::start() {
-    buildWorld(); // Sets up rooms, enemies, and allies.
     cout << "Game Object Ran!" << endl;
 }
 
@@ -56,7 +63,7 @@ void Game::showHelp() const { // Lists available commands
         "Available Commands:\n" <<
         "0: Quit Game\n" <<
         "1: Describe Current Room\n" <<
-        "2: Show Player Status\n" <<
+        "2: Check Inventory\n" <<
         "3: Move in a Direction \n" <<
         "4: Attack Enemy\n" <<
         "5: Talk to Ally\n" <<
@@ -65,6 +72,10 @@ void Game::showHelp() const { // Lists available commands
 
 void Game::status() const {
     cout << "No clue what you mean by Game::status()." << endl;
+}
+
+void Game::showInventory() const {
+    player.getInventory().display();
 }
 
 void Game::describeCurrentRoom() const { // Gives a description of the current room
@@ -189,8 +200,8 @@ void Game::choice() { // Deals with User Input and choices.
         case 1: // Describe Current Room.
             describeCurrentRoom();
             break;
-        case 2: // Show Status.
-            status();
+        case 2: // Show Inventory.
+            showInventory();
             break;
         case 3: // Asks for direction input, then moves the User. --> Changed to normalizDirection()
         { 

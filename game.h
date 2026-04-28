@@ -9,6 +9,7 @@
 #include "enemies.h"
 #include "Player.h"
 #include "rooms.h"
+#include "Items.h"
 
 class Game {
 public:
@@ -18,6 +19,7 @@ public:
     void start();
     void showHelp() const;
     void status() const;
+    void showInventory() const;
     void describeCurrentRoom() const;
     void move(const std::string& direction);
     void checkEnemy(Rooms* next);
@@ -33,12 +35,9 @@ private:
     void fightEnemy(Rooms* next); 
     void enemyAttack();
     std::string normalizeDirection(const std::string& direction) const;
+    Player player{100, "Hero"};
+    std::unordered_map<std::string, std::unique_ptr<Item>> items;
 
-    // I will comment out this confusing "Player" stuff for now
-    //Player player;
-    //std::unordered_map<std::string, std::shared_ptr<Rooms>> rooms;
-    //std::unordered_map<std::string, std::shared_ptr<Enemies>> enemies;
-    //std::unordered_map<std::string, std::shared_ptr<Allies>> allies;
     Rooms* currentRoom;
     Rooms* previousRoom;
     bool gameOver;
