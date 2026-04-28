@@ -7,6 +7,7 @@
 #include "enemies.h"
 #include "allies.h"
 #include "Player.h"
+#include "Items.h"
 
 extern Rooms room1;
 extern Rooms room2;
@@ -25,5 +26,11 @@ extern Allies ally2;
 extern Allies ally3;
 extern Allies ally4;
 extern Allies ally5;
- 
+
+extern item item1;
+extern item item2;
+extern item item3;
+extern item item4;
+extern item item5;
+
 #endif 

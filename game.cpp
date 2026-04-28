@@ -80,8 +80,7 @@ void Game::move(const std::string& direction) {
     else if (dir == "east") next = currentRoom->getEast();
     else if (dir == "west") next = currentRoom->getWest();
     else {
-        cout << "Invalid direction. Please enter north, south, east, or west." << endl;
-        cout << " " << endl;
+        cout << "Invalid direction. Please enter north, south, east, or west.\n" << endl;
         return;
     }
     if (next) {
@@ -133,8 +132,7 @@ void Game::attackEnemy(Rooms* next) { // Attacks the enemy within the room
     cout << "You hit the " << enemy->getName() << " for "<< damage << " damage." << endl;
 
     if (enemy->getHp() == 0) { // Sets the room pointer to null after the enemy is defeated
-        cout << "Enemy defeated!" << endl;
-        cout << " " << endl; // Adds a blank line for better readability
+        cout << "Enemy defeated!\n" << endl;
         next->setEnemy(nullptr);
     } else {
         cout << "Enemy HP remaining: " << enemy->getHp() << endl;
@@ -179,8 +177,7 @@ void Game::choice() { // Deals with User Input and choices.
     if (cin.fail()) { // Checks if the input is valid, if not it clears the error and ignores the rest of the input, then prompts the user to try again.    
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Invalid input. Please enter a number." << endl;
-        cout << " " << endl;
+        cout << "Invalid input. Please enter a number.\n" << endl;
         return;
     }
     cout << " " << endl; // Adds a blank line for better readability
