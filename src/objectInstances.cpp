@@ -2,9 +2,6 @@
 
 #include "objectInstances.h"
 
-// Player Class Instances
-
-
 // --------------------------------------------------Room Class Instances--------------------------------------------------
 Rooms room1(
     "Entrance", 
@@ -30,6 +27,11 @@ Rooms room5(
     "Escape Route", 
     "R005", 
     "A hidden passage that leads to freedom. The air is fresh and clean, a stark contrast to the rest of the dungeon."
+);
+Rooms room6(
+    "Freedom!", 
+    "R006", 
+    "There is no Description. As the game ends upon entering Room 6."
 );
 
 
@@ -72,4 +74,30 @@ Enemies enemy5(
 Allies ally1(
     "Larry",
     "Hey there! I'm Larry, the friendly ghost. There's an escape route in the last room, but it's guarded by a monster. If you can defeat it, you can escape the dungeon!"
+);
+
+// --------------------------------------------------Item Class Instances--------------------------------------------------
+Item item1(
+    "Stick",
+    "But a simple stick. It's not very useful, but it's celluose based construction feels comforting in your hand."
+);
+
+Item item2(
+    "Bomb",
+    "Volatile and explosive. This could pack a punch if thrown at an enemy."
+);
+
+Item item3(
+    "Better Sword",
+    "It's a better sword. No doubt about it. Better...than sword. Use it to increase your attack damage."
+);
+
+Item item4(
+    "Rations",
+    "Neatly packed and well preserved food items. Eating this will restore some of your health."
+);
+
+Item item5(
+    "Ghostly Ectoplasm",
+    "Oddly both very airy and slimy, like a sticky film of silk. Not much use to you. Maybe someone else will take it?"
 );

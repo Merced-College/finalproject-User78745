@@ -15,3 +15,11 @@ void Player::takeDamage(int damage){
         hp = 0;
     }
 }
+
+Inventory& Player::getInventory(){
+    return inventory;
+}
+
+const Inventory& Player::getInventory() const {
+    return inventory;
+}

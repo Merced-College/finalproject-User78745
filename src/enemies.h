@@ -5,7 +5,7 @@
 class Enemies {
     public:
         Enemies(int hp, std::string name = "Enemy", std::string description = "Bad guy.", std::string warningStr = "Danger.");
-        int getHp();;
+        int getHp();
         std::string getDescription();
         void takeDamage(int damage);
         std::string displayWarning();
