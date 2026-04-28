@@ -1,3 +1,11 @@
+/*
+Author: Yen Her
+Class: inventory
+
+Description:
+Manages the inventory of the player by using a vector.
+Includes function to add items, sort inventory, and display current inventory
+*/
 #include <iostream>
 #include "inventory.h"
 #include <utility>

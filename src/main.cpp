@@ -1,3 +1,10 @@
+/*
+Author: Yen Her/Brice Yang
+Class: main
+
+Description:
+starts up and runs the game until gameOver.
+*/
 #include <iostream>
 #include <string>
 #include "game.h"

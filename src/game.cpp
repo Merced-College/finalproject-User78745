@@ -1,3 +1,12 @@
+/*
+Author: Yen Her/Brice Yang
+Class: game
+
+Description:
+The main logic class of the game. Everything in this class handles all decision-making in the game. It links every other class in the program together.
+Functions here handle all logic of world building, combat, inventory, movement, and player choices.
+*/
+
 #include "game.h"
 #include <iostream>
 #include <string>

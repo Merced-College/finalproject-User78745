@@ -1,5 +1,10 @@
-// File used to handle instances of room, enemy, and ally objects.
+/*
+Author: Brice Yang
+Class: objectInstances
 
+Description:
+A helper class used to handle the instances for rooms, enemies, allies, and items.
+*/
 #include "objectInstances.h"
 
 // --------------------------------------------------Room Class Instances--------------------------------------------------

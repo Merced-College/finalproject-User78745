@@ -1,3 +1,12 @@
+/*
+Author: Brice Yang / Yen Her
+Class: enemies
+
+Description:
+Creates enemies into the game, which the player can combat in order to progress through the dungeon.
+Includes functions for getting HP, taking damage, getting name, getting description, and displaying a warning
+*/
+
 #include "enemies.h"
 #include <iostream>
 using namespace std;

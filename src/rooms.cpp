@@ -1,4 +1,11 @@
-//Implementation file for the rooms class
+/*
+Author: Yen Her
+Class: rooms
+
+Description:
+Creates the room objects in the game.
+Functions here link player, movement, allies, and enemies together. Letting us set up directions and the map and where enemies/allies spawn in.
+*/
 #include "rooms.h"
 #include "enemies.h"
 #include "allies.h"

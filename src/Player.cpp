@@ -1,3 +1,11 @@
+/*
+Author: Yen Her
+Class: player
+
+Description:
+Creates the player class which handles combat (on the user side) and the inventory system of the game.
+*/
+
 #include "Player.h"
 
 Player::Player(int hp, std::string name){
